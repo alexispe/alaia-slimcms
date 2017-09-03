@@ -1,0 +1,39 @@
+{% extends "layout.twig" %}
+
+{% block content %}
+  <h1>Modifier un utilisateur</h1>
+  <form class="" action="{{ path_for('userUpdate', { 'id' : user.id }) }}" method="post">
+    <div class="form-group">
+      <label for="firstname">Prénom :</label>
+      <input type="text" name="firstname" value="{{ user.firstname }}" placeholder="Prénom" class="form-control">
+    </div>
+    <div class="form-group">
+      <label for="lastname">Nom :</label>
+      <input type="text" name="lastname" value="{{ user.lastname }}" placeholder="Nom" class="form-control">
+    </div>
+    <div class="form-group">
+      <label for="email">Email :</label>
+      <input type="text" name="email" value="{{ user.email }}" placeholder="Email" class="form-control">
+    </div>
+    <div class="form-group">
+      <label for="password">Mot de passe :</label>
+      <input type="text" name="password" value="{{ user.password }}" placeholder="Mot de passe" class="form-control">
+    </div>
+    <div class="form-group">
+      <label for="role">Rôle :</label>
+      <select class="form-control" name="role">
+        {% for role in roles %}
+          {% if role.id == user.idrole %}
+            <option value="{{ role.id }}" selected>{{ role.name }}</option>
+          {% else %}
+            <option value="{{ role.id }}">{{ role.name }}</option>
+          {% endif %}
+        {% endfor %}
+      </select>
+    </div>
+    <div class="form-group">
+      <input type="hidden" name="id" value="{{ user.id }}">
+      <input type="submit" class="btn btn-primary" value="Modifier">
+    </div>
+  </form>
+{% endblock %}

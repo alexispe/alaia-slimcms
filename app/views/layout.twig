@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <title></title>
+    <link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/jquery-ui.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/vert-menu.css">
+    <link rel="stylesheet" type="text/css" href="/css/simditor.css">
+    <link rel="stylesheet" type="text/css" href="/css/ionicons.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/gridstack.css"/>
+
+
+    <link href="https://fonts.googleapis.com/css?family=Rajdhani" rel="stylesheet">
+  </head>
+  <body>
+    <div class="row">
+      <!-- uncomment code for absolute positioning tweek see top comment in css -->
+      <!-- <div class="absolute-wrapper"> </div> -->
+      <!-- Menu -->
+      <div class="side-menu">
+        <nav class="navbar navbar-default" role="navigation">
+          <!-- Brand and toggle get grouped for better mobile display -->
+          <div class="navbar-header">
+            <div class="brand-wrapper">
+              <!-- Hamburger -->
+              <button type="button" class="navbar-toggle">
+                <span class="sr-only">Navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              <!-- Brand -->
+              <div class="brand-name-wrapper">
+                <a class="navbar-brand" href="#">
+                  ALAIA
+                </a>
+              </div>
+
+              <!-- Search -->
+              <a data-toggle="collapse" href="#search" class="btn btn-default" id="search-trigger">
+                <span class="glyphicon glyphicon-search"></span>
+              </a>
+
+              <!-- Search body -->
+              <div id="search" class="panel-collapse collapse">
+                <div class="panel-body">
+                  <form class="navbar-form" role="search">
+                    <div class="form-group">
+                      <input type="text" class="form-control" placeholder="Search">
+                    </div>
+                    <button type="submit" class="btn btn-default ">
+                      <span class="glyphicon glyphicon-ok"></span>
+                    </button>
+                  </form>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- Main Menu -->
+          <div class="side-menu-container">
+            <ul class="nav navbar-nav">
+              <li class="panel panel-default" id="dropdown">
+                <a data-toggle="collapse" href="#dropdown-page1">
+                  <span class="glyphicon glyphicon-th-list"></span>
+                  Pages
+                  <span class="caret"></span>
+                </a>
+
+                <!-- Dropdown level 1 -->
+                <div id="dropdown-page1" class="panel-collapse collapse">
+                  <div class="panel-body">
+                    <ul class="nav navbar-nav">
+                      <li>
+                        <a href="{{ path_for('pageList') }}">Toutes les pages</a>
+                      </li>
+                      <li>
+                        <a href="{{ path_for('pageCreate') }}">Ajouter</a>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </li>
+              <li class="panel panel-default" id="dropdown">
+                <a data-toggle="collapse" href="#dropdown-articles1">
+                  <span class="glyphicon glyphicon-book"></span>
+                  Articles
+                  <span class="caret"></span>
+                </a>
+                <div id="dropdown-articles1" class="panel-collapse collapse">
+                  <div class="panel-body">
+                    <ul class="nav navbar-nav">
+                      <li>
+                        <a href="{{ path_for('userList') }}">Tous les articles</a>
+                      </li>
+                      <li>
+                        <a href="{{ path_for('userCreate') }}">Ajouter</a>
+                      </li>
+                      <!-- Dropdown level 2 -->
+                      <li class="panel panel-default" id="dropdown">
+                        <a data-toggle="collapse" href="#dropdown-articles2">
+                          <span class="glyphicon glyphicon-tag"></span>
+                          Catégories
+                          <span class="caret"></span>
+                        </a>
+                        <div id="dropdown-articles2" class="panel-collapse collapse">
+                          <div class="panel-body">
+                            <ul class="nav navbar-nav">
+                              <li>
+                                <a href="{{ path_for('roleList') }}">Toutes les catégories</a>
+                              </li>
+                              <li>
+                                <a href="{{ path_for('roleList') }}">Ajouter</a>
+                              </li>
+                            </ul>
+                          </div>
+                        </div>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </li>
+              <li class="panel panel-default" id="dropdown">
+                <a data-toggle="collapse" href="#dropdown-user1">
+                  <span class="glyphicon glyphicon-user"></span>
+                  Utilisateurs
+                  <span class="caret"></span>
+                </a>
+                <div id="dropdown-user1" class="panel-collapse collapse">
+                  <div class="panel-body">
+                    <ul class="nav navbar-nav">
+                      <li>
+                        <a href="{{ path_for('userList') }}">Tous les utilisateurs</a>
+                      </li>
+                      <li>
+                        <a href="{{ path_for('userCreate') }}">Ajouter</a>
+                      </li>
+                      <!-- Dropdown level 2 -->
+                      <li class="panel panel-default" id="dropdown">
+                        <a data-toggle="collapse" href="#dropdown-user2">
+                          <span class="glyphicon glyphicon-tag"></span>
+                          Rôles
+                          <span class="caret"></span>
+                        </a>
+                        <div id="dropdown-user2" class="panel-collapse collapse">
+                          <div class="panel-body">
+                            <ul class="nav navbar-nav">
+                              <li>
+                                <a href="{{ path_for('roleList') }}">Éditer</a>
+                              </li>
+                            </ul>
+                          </div>
+                        </div>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </li>
+
+
+                <li>
+                  <a href="#">
+                    <span class="glyphicon glyphicon-cog"></span>
+                    Réglages
+                  </a>
+                </li>
+                <li>
+                  <a href="{{ path_for('adminLogout') }}">
+                    <span class="glyphicon glyphicon-log-out"></span>
+                    Déconnexion
+                  </a>
+                </li>
+              </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+          </nav>
+
+        </div>
+
+        <!-- Main Content -->
+        <div class="container-fluid">
+          <div class="side-body">
+            {% if flash.success %}
+              <div class="alert alert-success alert-dismissible mt-2" role="alert">
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+                {{ flash.success }}
+              </div>
+            {% endif %}
+            {% if flash.danger %}
+              <div class="alert alert-danger alert-dismissible mt-2" role="alert">
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+                {{ flash.danger }}
+              </div>
+            {% endif %}
+            {% if flash.warning %}
+              <div class="alert alert-warning alert-dismissible mt-2" role="alert">
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+                {{ flash.warning }}
+              </div>
+            {% endif %}
+            {% block content %}{% endblock %}
+          </div>
+        </div>
+      </div>
+
+    </body>
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js" charset="utf-8"></script>
+    <script src="/js/jquery-ui.min.js" charset="utf-8"></script>
+    <script src="/js/lodash.js" charset="utf-8"></script>
+    <script src="/js/bootstrap.min.js" charset="utf-8"></script>
+    <script src="/js/module.min.js" charset="utf-8"></script>
+    <script src="/js/vert-menu.js" charset="utf-8"></script>
+    <script src="/js/hotkeys.min.js" charset="utf-8"></script>
+    <script src="/js/uploader.min.js" charset="utf-8"></script>
+    <script src="/js/simditor.min.js" charset="utf-8"></script>
+    <script src="/js/gridstack.all.js" charset="utf-8"></script>
+    <script src="/js/module.pagebuilder.js" charset="utf-8"></script>
+    <script type="text/javascript">
+      var editor = new Simditor({
+        textarea: $('#editor'),
+        defaultImage: '/img/image.png'
+      });
+    </script>
+  </html>

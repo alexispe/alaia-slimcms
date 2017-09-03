@@ -1,0 +1,83 @@
+{% extends "layout.twig" %}
+
+{% block content %}
+  <h1>Liste des rôles</h1>
+  <div class="row">
+    <div class="col-md-9">
+      <table id="example" class="table table-bordered">
+        <thead>
+          <tr>
+            <th>Role</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for role in roles %}
+          <tr>
+            <td>{{ role.name }}</td>
+            <td>
+              <!-- Modification -->
+              <a href="#" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#role-update-{{ role.id }}"><span class="ion-edit"> Modifier</span></a>
+              <div class="modal fade" id="role-update-{{ role.id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                  <div class="modal-content">
+                    <form action="{{ path_for('roleUpdate', {'id' : role.id}) }}" method="post">
+                      <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Edition du rôle</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                          <span aria-hidden="true">&times;</span>
+                        </button>
+                      </div>
+                      <div class="modal-body">
+                        <div class="form-group">
+                          <label for="role">Nom du rôle :</label>
+                          <input type="text" name="role" value="{{ role.name }}" class="form-control">
+                        </div>
+                      </div>
+                      <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Annuer</button>
+                        <input type="submit" value="Valider" class="btn btn-success">
+                      </div>
+                    </form>
+                  </div>
+                </div>
+              </div>
+              <!-- Suppression -->
+              <a href="#" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#role-delete-{{ role.id }}"><span class="ion-trash-b"> Supprimer</span></a>
+              <div class="modal fade" id="role-delete-{{ role.id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title" id="exampleModalLabel">Confirmez la suppression</h5>
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-secondary" data-dismiss="modal">Annuer</button>
+                      <a href="{{ path_for('roleDelete', { 'id' : role.id }) }}" class="btn btn-danger">Supprimer définitivement</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+    <div class="col-md-3">
+      <form class="" action="{{ path_for('roleCreate') }}" method="post">
+        <div class="form-group">
+          <label for="name">Créer un rôle :</label>
+          <div class="input-group">
+            <input type="text" class="form-control" name="role" placeholder="Nom (ex: Visiteur, Editeur)">
+            <span class="input-group-btn">
+              <button class="btn btn-primary" type="submit">Créer</button>
+            </span>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+{% endblock %}
