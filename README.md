@@ -2,6 +2,8 @@
 
 [![N|Solid](https://i.imgur.com/i7CZ4qC.png)](http://alexis-petit.fr)
 
+`WARNING: This project is actually in developpement and all fonctionnality are not working. You can place a star to support me.`
+
 Alaia is a simple modular CMS created with [Slim framework](https://www.slimframework.com/)
 This one is perfect for creation of blogs, presentation sites and all simples websites.
 
@@ -36,9 +38,11 @@ After install set write permissions on `/tmp/cache`
 
 # Todos
 
- - Setup tool for first installation
- - Articles administration
- - Settings page
+ [ ] Setup tool for first installation
+ [ ] Articles administration
+ [ ] Settings page
 
 # You need help ?
-If you have problems on installation please contact me at contact@alexis-petit.fr and I will try to help you.
+If you have problems on installation please contact me at *contact@alexis-petit.fr* and I will try to help you.
+
+Made with :heart: by @alexispe [alexis-petit.fr](http://www.alexis-petit.fr)
