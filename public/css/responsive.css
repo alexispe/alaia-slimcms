@@ -1,0 +1,77 @@
+/* Normal desktop :992px. */
+@media (min-width: 992px) and (max-width: 1200px) {
+
+}
+
+ 
+/* Tablet desktop :768px. */
+@media (min-width: 768px) and (max-width: 991px) {
+
+.slider-content p {
+  font-size: 14px;
+}
+.progress {
+  margin-bottom: 35px;
+}
+.alt-content-box {
+  padding-left: 45px;
+}
+
+    
+}
+ 
+/* Large Mobile :480px. */
+@media only screen and (min-width: 481px) and (max-width: 767px) {
+.container {width:450px}
+
+.cd-headline.clip.is-full-width > span {
+  font-size: 30px;
+  line-height: 45px;
+}    
+.portfolio-menu button {
+  margin: 10px 0;
+}
+
+.call-to-action > h3 {
+  font-size: 20px;
+}
+.call-to-action a {
+  float: left;
+}
+
+  }
+ /* small mobile :320px. */
+@media (max-width: 480px) {
+.container {width:300px}
+    
+.cd-headline.clip.is-full-width > span {
+  font-size: 20px;
+}  
+.cd-headline.clip span {
+  padding: 20px 0;
+}
+.btn.btn-large {
+  padding: 10px 20px;
+  font-size: 12px;
+}
+.main-slider-content h2 {
+  font-size: 26px;
+  letter-spacing: 3px;
+}
+.main-slider-content p {
+  font-size: 13px;
+  width: 70%;
+}
+.portfolio-menu button {
+  margin: 10px 0;
+}
+   .call-to-action > h3 {
+  font-size: 20px;
+}
+.call-to-action a {
+  float: left;
+} 
+.section-title p {
+  font-size: 13px;
+}
+    }

@@ -3,12 +3,12 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <title></title>
-    <link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="/css/jquery-ui.min.css">
-    <link rel="stylesheet" type="text/css" href="/css/vert-menu.css">
-    <link rel="stylesheet" type="text/css" href="/css/simditor.css">
-    <link rel="stylesheet" type="text/css" href="/css/ionicons.min.css">
-    <link rel="stylesheet" type="text/css" href="/css/gridstack.css"/>
+    <link rel="stylesheet" type="text/css" href="/css/admin/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/admin/jquery-ui.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/admin/vert-menu.css">
+    <link rel="stylesheet" type="text/css" href="/css/admin/simditor.css">
+    <link rel="stylesheet" type="text/css" href="/css/admin/ionicons.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/admin/gridstack.css"/>
 
 
     <link href="https://fonts.googleapis.com/css?family=Rajdhani" rel="stylesheet">
@@ -93,10 +93,10 @@
                   <div class="panel-body">
                     <ul class="nav navbar-nav">
                       <li>
-                        <a href="{{ path_for('userList') }}">Tous les articles</a>
+                        <a href="{{ path_for('postList') }}">Tous les articles</a>
                       </li>
                       <li>
-                        <a href="{{ path_for('userCreate') }}">Ajouter</a>
+                        <a href="{{ path_for('postCreate') }}">Ajouter</a>
                       </li>
                       <!-- Dropdown level 2 -->
                       <li class="panel panel-default" id="dropdown">
@@ -109,10 +109,7 @@
                           <div class="panel-body">
                             <ul class="nav navbar-nav">
                               <li>
-                                <a href="{{ path_for('roleList') }}">Toutes les catégories</a>
-                              </li>
-                              <li>
-                                <a href="{{ path_for('roleList') }}">Ajouter</a>
+                                <a href="{{ path_for('categorieList') }}">Éditer</a>
                               </li>
                             </ul>
                           </div>
@@ -213,16 +210,16 @@
 
     </body>
     <script src="https://code.jquery.com/jquery-3.2.1.min.js" charset="utf-8"></script>
-    <script src="/js/jquery-ui.min.js" charset="utf-8"></script>
-    <script src="/js/lodash.js" charset="utf-8"></script>
-    <script src="/js/bootstrap.min.js" charset="utf-8"></script>
-    <script src="/js/module.min.js" charset="utf-8"></script>
-    <script src="/js/vert-menu.js" charset="utf-8"></script>
-    <script src="/js/hotkeys.min.js" charset="utf-8"></script>
-    <script src="/js/uploader.min.js" charset="utf-8"></script>
-    <script src="/js/simditor.min.js" charset="utf-8"></script>
-    <script src="/js/gridstack.all.js" charset="utf-8"></script>
-    <script src="/js/module.pagebuilder.js" charset="utf-8"></script>
+    <script src="/js/admin/jquery-ui.min.js" charset="utf-8"></script>
+    <script src="/js/admin/lodash.js" charset="utf-8"></script>
+    <script src="/js/admin/bootstrap.min.js" charset="utf-8"></script>
+    <script src="/js/admin/module.min.js" charset="utf-8"></script>
+    <script src="/js/admin/vert-menu.js" charset="utf-8"></script>
+    <script src="/js/admin/hotkeys.min.js" charset="utf-8"></script>
+    <script src="/js/admin/uploader.min.js" charset="utf-8"></script>
+    <script src="/js/admin/simditor.min.js" charset="utf-8"></script>
+    <script src="/js/admin/gridstack.all.js" charset="utf-8"></script>
+    <script src="/js/admin/module.pagebuilder.js" charset="utf-8"></script>
     <script type="text/javascript">
       var editor = new Simditor({
         textarea: $('#editor'),

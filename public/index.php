@@ -5,6 +5,8 @@ use \App\Controllers\HomeController;
 use \App\Controllers\PageController;
 use \App\Controllers\UserController;
 use \App\Controllers\RoleController;
+use \App\Controllers\PostController;
+use \App\Controllers\CategorieController;
 use \App\Controllers\AdminController;
 
 use \App\Middlewares\AccessAdminMiddleware;
@@ -45,6 +47,18 @@ $app->group('/'.$settings['admin']['url'], function () use ($app) {
   $app->post('/role/create', RoleController::class.':create')->setName('roleCreate');
   $app->get('/role/delete/{id}', RoleController::class.':delete')->setName('roleDelete');
   $app->post('/role/update/{id}', RoleController::class.':update')->setName('roleUpdate');
+
+  $app->get('/post', PostController::class.':list')->setName('postList');
+  $app->get('/post/create', PostController::class.':create')->setName('postCreate');
+  $app->post('/post/create', PostController::class.':create');
+  $app->get('/post/delete/{id}', PostController::class.':delete')->setName('postDelete');
+  $app->get('/post/update/{id}', PostController::class.':update')->setName('postUpdate');
+  $app->post('/post/update/{id}', PostController::class.':update');
+
+  $app->get('/categorie', CategorieController::class.':list')->setName('categorieList');
+  $app->post('/categorie/create', CategorieController::class.':create')->setName('categorieCreate');
+  $app->get('/categorie/delete/{id}', CategorieController::class.':delete')->setName('categorieDelete');
+  $app->post('/categorie/update/{id}', CategorieController::class.':update')->setName('categorieUpdate');
 })->add(new \App\Middlewares\AccessAdminMiddleware($container, $_SESSION['admin']['id']));
 
 $app->group('/'.$settings['admin']['url'], function () use ($app) {

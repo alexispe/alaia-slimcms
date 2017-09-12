@@ -41,7 +41,7 @@ $.each(blocks, function(k,v) {
 
 // ######### TRIGGER #########
 $('.remove').click(function(){
-  el = $(this).closest('.grid-stack-item')
+  el = $(this).closest('.grid-stack-item');
   grid.remove_widget(el);
 });
 $('#FormAddBlock').submit(function() {

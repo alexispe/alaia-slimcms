@@ -32,9 +32,9 @@ class PageController extends Controller {
 
   public function update($request, $response, $args) {
     if($request->isPost()) {
-
       $post = $_POST;
       $number_of_updates = 0;
+      $page = $request->getParam('id');
       $all_blocks = array();
       $all_uniqid = array();
       foreach($post as $key => $value) {
@@ -56,11 +56,10 @@ class PageController extends Controller {
         }
         $all_blocks[$uniqid] = $current_block;
       }
+      $stmt = $this->pdo()->delete()->from('page_block')->where('page','=',$page);
+      $affectedRows = $stmt->execute();
       foreach($all_blocks as $key => $block) {
-        $stmt = $this->pdo()->delete()->from('page_block')->where('uniqid','=',$key);
-        $affectedRows = $stmt->execute();
-
-        $stmt = $this->pdo()->insert(array('uniqid','page','block_template','variables'))->into('page_block')->values(array($key,$request->getParam('id'),$block['block_template'],json_encode($block)));
+        $stmt = $this->pdo()->insert(array('uniqid','page','block_template','variables','x','y'))->into('page_block')->values(array($key,$page,$block['block_template'],json_encode($block),$block['x'],$block['y']));
         $insertId = $stmt->execute();
       }
 
