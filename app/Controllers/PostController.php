@@ -16,9 +16,10 @@ class PostController extends Controller {
       $title = trim($request->getParam('title'));
       $content = trim($request->getParam('content'));
       $categorie = $request->getParam('categorie');
-      $insertStatement = $this->pdo()->insert(array('title','content','categorie','author'))
+      $img = $request->getParam('img');
+      $insertStatement = $this->pdo()->insert(array('title','content','categorie','author','img'))
                      ->into('post')
-                     ->values(array($title,$content,$categorie,1));
+                     ->values(array($title,$content,$categorie,1,$img));
       $insertStatement->execute(false);
       $this->flash('L\'article "'.$title.'" a été crée');
 
@@ -38,7 +39,8 @@ class PostController extends Controller {
       $title = trim($request->getParam('title'));
       $content = trim($request->getParam('content'));
       $categorie = $request->getParam('categorie');
-      $stmt = $this->pdo()->update(array('title'=>$title,'content'=>$content,'categorie'=>$categorie))->table('post')->where('id','=',$args['id']);
+      $img = $request->getParam('img');
+      $stmt = $this->pdo()->update(array('title'=>$title,'content'=>$content,'categorie'=>$categorie,'img'=>$img))->table('post')->where('id','=',$args['id']);
       $updatedRows = $stmt->execute();
       if($updatedRows) $this->flash('L\'article a été modifié');
       else $this->flash('Impossible de modifier l\'article', 'warning');
