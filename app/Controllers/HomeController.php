@@ -26,8 +26,11 @@ class HomeController extends Controller {
         $stmt = $stmt->execute();
         $posts = $stmt->fetchAll();
         $blog = '';
+
         foreach($posts as $post) {
-          $blog .= '<div class="col-md-4"><div class="single-blog-item"><div class="blog-item-thumb"><img src="'.$post['img'].'" alt=""><a href="#" class="readm-btn"><i class="fa fa-plus"></i></a></div><div class="blog-item-content"><a href="#"><h2>'.$post['title'].'</h2></a><h4>Publié le 21 juillet 2017 - <a target="blank" href="http://jxnblk.com/react-x-ray/">Voir l\'outil</a></h4><p>'.$post['content'].'</p></div></div></div>';
+          $blog_template_var = array('{{title}}','{{content}}','{{img}}');
+          $blog_replace_with = array($post['title'],$post['content'],$post['img']);
+          $blog .= str_replace($blog_template_var, $blog_replace_with, $block_template['template_inner']);
         }
         array_push($template_var,'{{blog}}');
         array_push($replace_with,$blog);
