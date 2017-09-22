@@ -7,6 +7,7 @@ use \App\Controllers\UserController;
 use \App\Controllers\RoleController;
 use \App\Controllers\PostController;
 use \App\Controllers\CategorieController;
+use \App\Controllers\MenuController;
 use \App\Controllers\AdminController;
 
 use \App\Middlewares\AccessAdminMiddleware;
@@ -59,6 +60,10 @@ $app->group('/'.$settings['admin']['url'], function () use ($app) {
   $app->post('/categorie/create', CategorieController::class.':create')->setName('categorieCreate');
   $app->get('/categorie/delete/{id}', CategorieController::class.':delete')->setName('categorieDelete');
   $app->post('/categorie/update/{id}', CategorieController::class.':update')->setName('categorieUpdate');
+
+  $app->get('/menu', MenuController::class.':list')->setName('menuList');
+  $app->post('/menu/create', MenuController::class.':create')->setName('menuCreate');
+  $app->get('/menu/delete/{id}', MenuController::class.':delete')->setName('menuDelete');
 })->add(new \App\Middlewares\AccessAdminMiddleware($container, $_SESSION['admin']['id']));
 
 $app->group('/'.$settings['admin']['url'], function () use ($app) {
@@ -68,6 +73,7 @@ $app->group('/'.$settings['admin']['url'], function () use ($app) {
 });
 
 $app->get('/{link}', HomeController::class.':home')->setName('index');
+$app->get('/', HomeController::class.':home');
 
 
 $app->run();

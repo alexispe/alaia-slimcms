@@ -2,14 +2,13 @@
 <html>
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-    <title></title>
+    <title>Administration</title>
     <link rel="stylesheet" type="text/css" href="/css/admin/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="/css/admin/jquery-ui.min.css">
     <link rel="stylesheet" type="text/css" href="/css/admin/vert-menu.css">
     <link rel="stylesheet" type="text/css" href="/css/admin/simditor.css">
     <link rel="stylesheet" type="text/css" href="/css/admin/ionicons.min.css">
     <link rel="stylesheet" type="text/css" href="/css/admin/gridstack.css"/>
-
 
     <link href="https://fonts.googleapis.com/css?family=Rajdhani" rel="stylesheet">
   </head>
@@ -155,75 +154,76 @@
                   </div>
                 </div>
               </li>
-
-
-                <li>
-                  <a href="#">
-                    <span class="glyphicon glyphicon-cog"></span>
-                    Réglages
-                  </a>
-                </li>
-                <li>
-                  <a href="{{ path_for('adminLogout') }}">
-                    <span class="glyphicon glyphicon-log-out"></span>
-                    Déconnexion
-                  </a>
-                </li>
-              </ul>
-            </div>
-            <!-- /.navbar-collapse -->
-          </nav>
-
-        </div>
-
-        <!-- Main Content -->
-        <div class="container-fluid">
-          <div class="side-body">
-            {% if flash.success %}
-              <div class="alert alert-success alert-dismissible mt-2" role="alert">
-                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                  <span aria-hidden="true">&times;</span>
-                </button>
-                {{ flash.success }}
-              </div>
-            {% endif %}
-            {% if flash.danger %}
-              <div class="alert alert-danger alert-dismissible mt-2" role="alert">
-                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                  <span aria-hidden="true">&times;</span>
-                </button>
-                {{ flash.danger }}
-              </div>
-            {% endif %}
-            {% if flash.warning %}
-              <div class="alert alert-warning alert-dismissible mt-2" role="alert">
-                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                  <span aria-hidden="true">&times;</span>
-                </button>
-                {{ flash.warning }}
-              </div>
-            {% endif %}
-            {% block content %}{% endblock %}
+              <li>
+                <a href="{{ path_for('menuList') }}">
+                  <span class="glyphicon glyphicon-menu-hamburger"></span>
+                  Menu
+                </a>
+              </li>
+              <li>
+                <a href="#">
+                  <span class="glyphicon glyphicon-cog"></span>
+                  Réglages
+                </a>
+              </li>
+              <li>
+                <a href="{{ path_for('adminLogout') }}">
+                  <span class="glyphicon glyphicon-log-out"></span>
+                  Déconnexion
+                </a>
+              </li>
+            </ul>
           </div>
-        </div>
+          <!-- /.navbar-collapse -->
+        </nav>
+
       </div>
 
-    </body>
-    <script src="https://code.jquery.com/jquery-3.2.1.min.js" charset="utf-8"></script>
-    <script src="/js/admin/jquery-ui.min.js" charset="utf-8"></script>
-    <script src="/js/admin/lodash.js" charset="utf-8"></script>
-    <script src="/js/admin/bootstrap.min.js" charset="utf-8"></script>
-    <script src="/js/admin/module.min.js" charset="utf-8"></script>
-    <script src="/js/admin/vert-menu.js" charset="utf-8"></script>
-    <script src="/js/admin/hotkeys.min.js" charset="utf-8"></script>
-    <script src="/js/admin/uploader.min.js" charset="utf-8"></script>
-    <script src="/js/admin/simditor.min.js" charset="utf-8"></script>
-    <script src="/js/admin/gridstack.all.js" charset="utf-8"></script>
-    <script src="/js/admin/module.pagebuilder.js" charset="utf-8"></script>
-    <script type="text/javascript">
-      var editor = new Simditor({
-        textarea: $('#editor'),
-        defaultImage: '/img/image.png'
-      });
-    </script>
-  </html>
+      <!-- Main Content -->
+      <div class="container-fluid">
+        <div class="side-body">
+          {% if flash.success %}
+            <div class="alert alert-success alert-dismissible mt-2" role="alert">
+              <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+              {{ flash.success }}
+            </div>
+          {% endif %}
+          {% if flash.danger %}
+            <div class="alert alert-danger alert-dismissible mt-2" role="alert">
+              <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+              {{ flash.danger }}
+            </div>
+          {% endif %}
+          {% if flash.warning %}
+            <div class="alert alert-warning alert-dismissible mt-2" role="alert">
+              <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+              {{ flash.warning }}
+            </div>
+          {% endif %}
+          {% block content %}{% endblock %}
+        </div>
+      </div>
+    </div>
+
+  </body>
+  <script src="https://code.jquery.com/jquery-3.2.1.min.js" charset="utf-8"></script>
+  <script src="/js/admin/jquery-ui.min.js" charset="utf-8"></script>
+  <script src="/js/admin/lodash.js" charset="utf-8"></script>
+  <script src="/js/admin/bootstrap.min.js" charset="utf-8"></script>
+  <script src="/js/admin/module.min.js" charset="utf-8"></script>
+  <script src="/js/admin/vert-menu.js" charset="utf-8"></script>
+  <script src="/js/admin/hotkeys.min.js" charset="utf-8"></script>
+  <script src="/js/admin/uploader.min.js" charset="utf-8"></script>
+  <script src="/js/admin/simditor.min.js" charset="utf-8"></script>
+  <script src="/js/admin/gridstack.all.js" charset="utf-8"></script>
+  <script src="/js/admin/module.pagebuilder.js" charset="utf-8"></script>
+  <script type="text/javascript">
+    var editor = new Simditor({textarea: $('#editor'), defaultImage: '/img/image.png'});
+  </script>
+</html>

@@ -3,9 +3,11 @@ $container = $app->getContainer();
 
 
 $container['pdo'] = function () {
-  $dsn = 'mysql:host=localhost;dbname=alaia;charset=utf8';
-  $usr = 'root';
-  $pwd = 'root';
+  $source = file_get_contents('../app/install/init.json');
+  $data = json_decode($source);
+  $dsn = 'mysql:host='.$data->database[0]->host.';dbname='.$data->database[0]->dbname.';charset=utf8';
+  $usr = $data->database[0]->user;
+  $pwd = $data->database[0]->password;
   $pdo = new \Slim\PDO\Database($dsn, $usr, $pwd);
   return $pdo;
 };

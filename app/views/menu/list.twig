@@ -1,0 +1,60 @@
+{% extends "layout.backend.twig" %}
+
+{% block content %}
+  <h1>Menu</h1>
+  <div class="row">
+    <div class="col-md-9">
+      <table id="example" class="table table-bordered">
+        <thead>
+          <tr>
+            <th>Titre</th>
+            <th>Lien</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for menu in menus %}
+          <tr>
+            <td>{{ menu.title }}</td>
+            <td>{{ menu.link }}</td>
+            <td>
+              <!-- Suppression -->
+              <a href="#" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#categorie-delete-{{ menu.id }}"><span class="ion-trash-b"> Supprimer</span></a>
+              <div class="modal fade" id="categorie-delete-{{ menu.id }}" tabindex="-1" categorie="dialog" aria-hidden="true">
+                <div class="modal-dialog" categorie="document">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title" id="exampleModalLabel">Confirmez la suppression</h5>
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-secondary" data-dismiss="modal">Annuer</button>
+                      <a href="{{ path_for('menuDelete', { 'id' : menu.id }) }}" class="btn btn-danger">Supprimer définitivement</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+    <div class="col-md-3">
+      <form class="" action="{{ path_for('menuCreate') }}" method="post">
+        <label for="name">Ajouter un menu</label>
+        <div class="form-group">
+          <input type="text" class="form-control" name="title" placeholder="Nom du menu">
+        </div>
+        <div class="form-group">
+          <input type="text" class="form-control" name="link" placeholder="Lien vers">
+        </div>
+        <div class="form-group">
+          <button class="btn btn-primary btn-block" type="submit">Créer</button>
+        </div>
+      </form>
+    </div>
+  </div>
+{% endblock %}

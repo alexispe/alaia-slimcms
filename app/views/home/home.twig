@@ -1,58 +1,20 @@
 {% extends "layout.frontend.twig" %}
 
 {% block content %}
-<!--[if lt IE 8]>
-<p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
-<![endif]-->
 
-<!-- Add your site or application content here -->
-<!-- PRELOADER -->
-<div class="page-loader" >
-  <div class="loader">Loading...</div>
-</div>
-<!-- /PRELOADER -->
 <!-- header start -->
-<header id="sticky-header" class="header-mark header-middle">
-  <div class="header-area">
-    <div class="container sm-100">
-      <div class="row">
-        <div class="col-md-3 col-sm-2">
-          <div class="logo text-upper">
-            <h4><a href="#">Alexis Petit</a></h4>
-          </div>
-        </div>
-        <div class="col-md-9 col-sm-10">
-          <!--Main Menu start-->
-          <div class="menu-area hidden-xs">
-            <nav>
-              <ul class="onepage-nav">
-                <li><a href="#home">Accueil</a></li>
-                <li><a href="#service">Services</a></li>
-                <li><a href="#work">Réalisations</a></li>
-                <li><a href="#blog">Outils</a></li>
-                <li><a href="#contact">Contact</a></li>
-              </ul>
-            </nav>
-          </div>
-          <!--Main Menu end-->
-          <!-- mobile menu start -->
-          <div class="mobile-menu visible-xs">
-            <nav id="mobile-nav">
-              <ul class="onepage-nav">
-                <li><a href="#home">Accueil</a></li>
-                <li><a href="#service">Services</a></li>
-                <li><a href="#work">Réalisations</a></li>
-                <li><a href="#blog">Outils</a></li>
-                <li><a href="#contact">Contact</a></li>
-              </ul>
-            </nav>
-          </div>
-          <!-- mobile menu end -->
-        </div>
-      </div>
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">WebSiteName</a>
     </div>
+    <ul class="nav navbar-nav">
+      {% for link in menu %}
+        <li><a href="{{ link.link }}">{{ link.title }}</a></li>
+      {% endfor %}
+    </ul>
   </div>
-</header>
+</nav>
 <!-- header end -->
 
   {% autoescape false %}
@@ -62,90 +24,8 @@
   {% endautoescape %}
 
 
+
   <!-- footer start -->
-  <footer>
-    <div class="footer-top pt-70 pb-40 footer-bg">
-      <div class="container">
-        <div class="row">
-          <div class="col-sm-3 mb-30">
-            <div class="footer-col-1">
-              <div class="footer-title">
-                <h4>Alexis Petit</h4>
-              </div>
-              <div class="footer-content">
-                <p>Développeur applications mobiles et applications web. Jeune entrepreneur motivé et passionné. Vous cherchez un freelance sérieux, n'hésitez plus. <br><br> Email : <a href="mailto:contact@alexis-petit.fr">contact@alexis-petit.fr</a>
-                </p>
-              </div>
-              <div class="social-icon">
-                <a href="https://twitter.com/AlexisPetit_"><i class="fa fa-twitter"></i></a>
-                <a href="https://www.instagram.com/alexispe_tit/"><i class="fa fa-instagram"></i></a>
-              </div>
-            </div>
-          </div>
-          <div class="col-sm-3 mb-30">
-            <div class="footer-title">
-              <h4>Derniers Ajouts</h4>
-              <ul class="recent-posts">
-                <li>
-                  <div class="footer-posts-body">
-                    <h6 class="footer-posts-title"><a href="#">&lt;XRay /&gt;</a></h6>
-                    <div class="footer-posts-meta">21 juillet 2017 </div>
-                  </div>
-                </li>
-                <li>
-                  <div class="footer-posts-body">
-                    <h6 class="footer-posts-title"><a href="#">contextMenu</a></h6>
-                    <div class="footer-posts-meta">21 juillet 2017 </div>
-                  </div>
-                </li>
-                <li>
-                  <div class="footer-posts-body">
-                    <h6 class="footer-posts-title"><a href="#">split.js</a></h6>
-                    <div class="footer-posts-meta">21 juillet 2017 </div>
-                  </div>
-                </li>
-                <li>
-                  <div class="footer-posts-body">
-                    <h6 class="footer-posts-title"><a href="#">split.js</a></h6>
-                    <div class="footer-posts-meta">21 juillet 2017 </div>
-                  </div>
-                </li>
-              </ul>
-            </div>
-          </div>
-          <div class="col-sm-3 mb-30">
-            <div class="footer-title">
-              <h4>Tags</h4>
-            </div>
-            <div class="tagcloud">
-              <a href="#">Développeur</a>
-              <a href="#">Mobile</a>
-              <a href="#">Web</a>
-              <a href="#">Startup</a>
-              <a href="#">Design</a>
-              <a href="#">Entrepreneur</a>
-              <a href="#">Autodidacte</a>
-              <a href="#">Création</a>
-              <a href="#">Portfolio</a>
-              <a href="#">Responsive</a>
-            </div>
-          </div>
-          <div class="col-sm-3 mb-30">
-            <div class="footer-title">
-              <h4>Instagram Feed</h4>
-            </div>
-            <div id="instafeed"></div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="main-footer grey-bg text-center ptb-20">
-      <div class="container">
-        <div class="row">
-          <span class="copyright">&copy; 2017 <a href="https://alexis-petit.fr/">alexis-petit.fr</a></span>
-        </div>
-      </div>
-    </div>
-  </footer>
+
   <!-- footer end -->
 {% endblock %}

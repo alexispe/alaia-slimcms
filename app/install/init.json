@@ -1,0 +1,10 @@
+{
+  "_comment":"Remplissez d'abord les champs puis mettez init à true.",
+  "init":true,
+  "database": [{
+    "host": "localhost",
+    "dbname": "alaia",
+    "user": "root",
+    "password": "root"
+  }]
+ }

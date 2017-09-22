@@ -5,7 +5,21 @@ namespace App\Controllers;
 class HomeController extends Controller {
 
   public function home($request, $response, $args) {
-    $stmt = $this->pdo()->select()->from('page')->whereLike('link',$args['link']);
+    if($args['link']) $link = $args['link'];
+    else $link = 'bienvenue';
+
+    // Vérification de l'installation
+    $source = file_get_contents('../app/install/init.json');
+    $data = json_decode($source);
+    if($data->init == false) {
+      return $response->getBody()->write("Vous devez configurer l'accès à la base de donnée dans /app/install/init.json");
+    }
+
+    $stmt = $this->pdo()->select()->from('menu');
+    $stmt = $stmt->execute();
+    $menu = $stmt->fetchAll();
+
+    $stmt = $this->pdo()->select()->from('page')->whereLike('link',$link);
     $stmt = $stmt->execute();
     $page = $stmt->fetch();
 
@@ -22,14 +36,15 @@ class HomeController extends Controller {
       $template_var = array();
       $replace_with = array();
       if($block_template['title']=='blog') {
-        $stmt = $this->pdo()->select()->from('post');
+        $stmt = $this->pdo()->select()->from('post')->join('categorie', 'categorie.id', '=', 'post.categorie', 'INNER')->orderBy('post.id', 'DESC');;
         $stmt = $stmt->execute();
         $posts = $stmt->fetchAll();
         $blog = '';
 
         foreach($posts as $post) {
-          $blog_template_var = array('{{title}}','{{content}}','{{img}}');
-          $blog_replace_with = array($post['title'],$post['content'],$post['img']);
+          $createdAt = date_format(date_create($post['createdAt']), 'd/m/Y');
+          $blog_template_var = array('{{title}}','{{content}}','{{img}}','{{categorie}}','{{date}}');
+          $blog_replace_with = array($post['title'],$post['content'],$post['img'],$post['name'],$createdAt);
           $blog .= str_replace($blog_template_var, $blog_replace_with, $block_template['template_inner']);
         }
         array_push($template_var,'{{blog}}');
@@ -42,7 +57,21 @@ class HomeController extends Controller {
       $page_block[$key]['content'] = str_replace($template_var, $replace_with, $block_template['template']);
     }
 
-    if($page) $this->render($response, 'home/home.twig', [ 'page' => $page, 'page_block' => $page_block ]);
+    if($page) $this->render($response, 'home/home.twig', [ 'page' => $page, 'page_block' => $page_block, 'menu' => $menu]);
     else $this->render($response, 'error/404.twig');
+  }
+
+  public function contact($request, $response) {
+    if($request->isPost()) {
+      $email = trim($request->getParam('email'));
+      $content = trim($request->getParam('content'));
+      $insertStatement = $this->pdo()->insert(array('email','content','createdAt'))
+                     ->into('contact')
+                     ->values(array($email,$content,date("Y-m-d H:i:s")));
+      $insertStatement->execute(false);
+      $this->flash('Votre demande a bien été prise en compte. Nous vous répondrons au plus vite.<br>Merci pour votre participation.');
+
+      return $this->redirect($response, 'index');
+    }
   }
 }
