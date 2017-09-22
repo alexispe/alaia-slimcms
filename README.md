@@ -22,6 +22,7 @@ All theses features can be used easily with the administration interface.
 | Login | List pages | Update page |
 | ------ | ------ | ------ |
 | ![Login image](https://i.imgur.com/jGBSedc.png) | ![List page image](https://i.imgur.com/cCAo10Y.png) | ![List page image](https://imgur.com/HRbRbXl.png) |
+
 More screenshots coming soon.
 
 ##### Modules
@@ -36,15 +37,15 @@ $ git clone https://github.com/alexispe/alaia-slimcms.git
 $ cd alaia-slimcms
 $ php composer install
 ```
-After install set write permissions on `/tmp/cache`
+1. After install set write permissions on `/tmp/cache` -- create folder if not exist.
 
-Create database and user whiwh have access. Please don't use root.
+2. Create database and user whiwh have access. Please don't use root.
 Import tables and data from `/app/install/init.sql`.
 Update `/app/install/init.json` with our database access. Set init to true and save.
 
-Change the name of the default page in `/app/Controllers/HomeController.php` line 9. (this will be automated soon)
+3. Change the name of the default page in `/app/Controllers/HomeController.php` line 9. (this will be automated soon)
 
-Default access is user : `admin` and password : `admin`. Don't forget to change that.
+4. Default super-access is user : `admin` and password : `admin`. Don't forget to change that in database (admin table).
 
 Installation done.
 
@@ -55,8 +56,14 @@ Installation done.
   - [x] Menu administration
   - [ ] Settings page
   - [ ] Interface for default page
+  - [ ] Secure super-access password
+  - [ ] Administrate template in panel. (actually in database)
+  - [ ] Translate texts in english (maybe multilang support?)
 
 # You need help ?
 If you have problems on installation please contact me at *contact@alexis-petit.fr* and I will try to help you.
+
+# I need help !
+I'm french developper, correct my english please.
 
 Made with :heart: by @alexispe [alexis-petit.fr](http://www.alexis-petit.fr)
