@@ -15,6 +15,7 @@ This one is perfect for creation of blogs, presentation sites and all simples we
   - Categories of articles (create/update/delete)
   - Users (create/update/delete)
   - Roles of users (create/update/delete)
+  - Menu (create/delete)
 
 All theses features can be used easily with the administration interface.
 
