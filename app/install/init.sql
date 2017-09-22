@@ -1,3 +1,5 @@
+-- Adminer 4.3.1 MySQL dump
+
 SET NAMES utf8;
 SET time_zone = '+00:00';
 SET foreign_key_checks = 0;
@@ -13,7 +15,7 @@ CREATE TABLE `admin` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 INSERT INTO `admin` (`id`, `pseudo`, `password`, `email`) VALUES
-(1,	'alexisp',	'test',	'contact@alexis-petit.fr');
+(1,	'admin',	'admin',	'admin@useless.co');
 
 DROP TABLE IF EXISTS `block_template`;
 CREATE TABLE `block_template` (
@@ -45,6 +47,15 @@ CREATE TABLE `categorie` (
 INSERT INTO `categorie` (`id`, `name`) VALUES
 (2,	'Tout');
 
+DROP TABLE IF EXISTS `menu`;
+CREATE TABLE `menu` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `title` varchar(80) NOT NULL,
+  `link` varchar(80) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+
 DROP TABLE IF EXISTS `page`;
 CREATE TABLE `page` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
@@ -54,9 +65,7 @@ CREATE TABLE `page` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 INSERT INTO `page` (`id`, `title`, `link`) VALUES
-(9,	'Nous contacter',	'nous-contacter'),
-(10,	'Développeur web freelance',	'bienvenue'),
-(11,	'Plan du site',	'plan-du-site');
+(10,	'Page d\'accueil',	'bienvenue');
 
 DROP TABLE IF EXISTS `page_block`;
 CREATE TABLE `page_block` (
@@ -74,12 +83,6 @@ CREATE TABLE `page_block` (
   CONSTRAINT `page_block_ibfk_3` FOREIGN KEY (`block_template`) REFERENCES `block_template` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-INSERT INTO `page_block` (`id`, `uniqid`, `page`, `block_template`, `variables`, `x`, `y`) VALUES
-(151,	'15e24e91ca0',	10,	2,	'{\"block_template\":\"2\",\"maintext\":\"La meilleur solution pour votre business\",\"secondarytext\":\"Petit ou grand projet choisissez la personne qui vous accompagnera dans votre digitalisation\",\"buttontext\":\"Demandez un devis gratuit\",\"x\":\"0\",\"y\":\"3\"}',	0,	3),
-(152,	'15e4e76fe88',	10,	1,	'{\"block_template\":\"1\",\"title\":\"{{title}}\",\"subtitle\":\"Cr\\u00e9ation de sites vitrines pour attirer de nouveaux clients, de sites e-commerce pour vendre efficassement vos produits, d\'applications mobiles pour rester comp\\u00e9titif.\",\"x\":\"0\",\"y\":\"0\"}',	0,	0),
-(153,	'15e4e898f5c',	10,	5,	'{\"block_template\":\"5\",\"title1\":\"Design & interface\",\"subtitle1\":\"Soucieux d\'une qualit\\u00e9 graphique, vos projets seront con\\u00e7us pour une exp\\u00e9rience utilisateur optimale.\",\"title2\":\"Modifiable \\u00e0 souhait\",\"subtitle2\":\"Une interface d\'administration cr\\u00e9e selon vos besoins vous permettra de modifier en d\\u00e9tail votre site.\",\"title3\":\"Responsive design\",\"subtitle3\":\"Avoir un site adaptatif selon les supports est aujourd\'hui indispensable, votre site est garantit compatible tout supports.\",\"title4\":\"Sur mesure\",\"subtitle4\":\"Ensembles nous allons mettre en place un site web ou application mobile construit sur mesure selon vos besoins.\",\"title5\":\" R\\u00e9f\\u00e9rencement\",\"subtitle5\":\"En s\'inspirant des techniques de Daniel Ichbiah nous feront tout pour optimiser votre r\\u00e9f\\u00e9rencement naturel.\",\"title6\":\"Maintenance et Suivi\",\"subtitle6\":\"La maintenance et le suivi de votre projet vous garantit de garder un applicatif \\u00e0 jour.\",\"x\":\"0\",\"y\":\"7\"}',	0,	7),
-(154,	'15e72cd24e0',	10,	6,	'{\"block_template\":\"6\",\"title\":\"\\u00c9tapes cl\\u00e9s vers la r\\u00e9ussite\",\"subtitle\":\"Un projet web ou application mobile est un investissement et non une d\\u00e9pense, il est primordial d\'analyser<br\\/> les besoins et d\'\\u00e9laborer les meilleurs strat\\u00e9gies \\u00e0 utiliser.\",\"step1title\":\" Rencontre\",\"step1subtitle\":\"Discutons de votre projet autour d\'un caf\\u00e9 pour discuter budget, identification des cibles, domaines et h\\u00e9bergement !\",\"step2title\":\"Plannification\",\"step2subtitle\":\"Une fois le cahier des charges d\\u00e9finit planifions les diff\\u00e9rentes \\u00e9tapes cl\\u00e9s du projet et la date de livraison.\",\"step3title\":\"D\\u00e9veloppement\",\"step3subtitle\":\"Ensembles, \\u00e9tapes par \\u00e9tapes nous assistons \\u00e0 la naissance de votre projet jusqu\'\\u00e0 sa mise en ligne officielle.\",\"step4title\":\"Suivi\",\"step4subtitle\":\"Une question ? Un souci ? Je reste avec vous pour suivre l\'\\u00e9volution de votre projet et continuer \\u00e0 le faire grandir.\",\"x\":\"0\",\"y\":\"18\"}',	0,	18),
-(155,	'15e3a6ccadd',	10,	4,	'{\"block_template\":\"4\",\"x\":\"0\",\"y\":\"27\"}',	0,	27);
 
 DROP TABLE IF EXISTS `post`;
 CREATE TABLE `post` (
@@ -97,10 +100,6 @@ CREATE TABLE `post` (
   CONSTRAINT `post_ibfk_2` FOREIGN KEY (`categorie`) REFERENCES `categorie` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-INSERT INTO `post` (`id`, `title`, `content`, `author`, `img`, `createdAt`, `updatedAt`, `categorie`) VALUES
-(2,	'XRay',	'<p>XRay est un composant <b>react</b> à ajouter à vos projets. Cette librairie permet le débogage de layouts CSS par l\'ajout simple de balises HTML.<br>&nbsp;<br></p>',	1,	'/img/blog/2.jpg',	NULL,	NULL,	2),
-(3,	'Contextmenu',	'<p>Ce plugin très complet permet de personnaliser le menu s\'affichant lors du clique droit sur une page web. Il utilise jQuery et est compatible avec la plupart des navigateurs.<br></p>',	1,	'/img/blog/3.jpg',	NULL,	NULL,	2),
-(4,	'split.js',	'<p>Split.js est un utilitaire qui permet de créer des vues et panneaux ajustables. <br><br><br></p>',	1,	'/img/blog/1.jpg',	NULL,	NULL,	2);
 
 DROP TABLE IF EXISTS `role`;
 CREATE TABLE `role` (
@@ -122,3 +121,6 @@ CREATE TABLE `user` (
   KEY `role` (`role`),
   CONSTRAINT `user_ibfk_1` FOREIGN KEY (`role`) REFERENCES `role` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+
+-- 2017-09-22 15:28:03
