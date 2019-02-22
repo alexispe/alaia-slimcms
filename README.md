@@ -1,3 +1,5 @@
+## Old project. No longer maintained
+
 # ALAIA
 
 [![N|Solid](https://i.imgur.com/i7CZ4qC.png)](http://alexis-petit.fr)
